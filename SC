@@ -1,0 +1,53 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("My GUI", "Midnight")
+
+
+--Main
+local Main = Window:NewTab("Main")
+local MainSec = Main:NewSection("Main2")
+
+
+--Main
+MainSec:NewButton("Reset", "Kills you", function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end)
+
+MainSec:NewToggle("Super-Human", "Go faster and jump higher", function(state)
+    if state then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 120
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 120
+    else
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+    end
+end)
+
+
+MainSec:NewToggle("Slow-Poke", "Makes You slow and jump less", function(state)
+    if state then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 8
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 25
+    else
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+    end
+end)
+
+MainSec:NewButton("Infinite Yield", "FE Admin Commands", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+
+MainSec:NewButton("PSX", "PSX Gui", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ggkoolko123/GOAT-HUB/main/GoatHub.lua",true))()
+end)
+--Local Player
+local Player = Window:NewTab("Player")
+local PlayerSec = Player:NewSection("Player2")
+
+PlayerSec:NewSlider("WS", "How fast you walk", 1000, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+PlayerSec:NewSlider("JP", "How high you jump", 1000, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
